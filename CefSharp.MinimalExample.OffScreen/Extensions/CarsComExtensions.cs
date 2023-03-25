@@ -12,18 +12,22 @@ namespace CefSharp.MinimalExample.OffScreen.Extensions
     {
         public static async Task CarsComCheckWhetherSignedInOrNotAsync(this ChromiumWebBrowser page)
         {
+            Console.WriteLine("Checking Cars.com sign status.");
             if (page.Address.StartsWith("https://www.cars.com/signin"))
             {
+                Console.WriteLine("You are not signed in. Signing in...");
                 // If not sign in!
                 await page.EvaluateScriptAsync("let emailElement = document.querySelector(\"[name='user[email]']\");emailElement.value = \"johngerson808@gmail.com\"");
                 await page.EvaluateScriptAsync("let passwordElement = document.querySelector(\"[name='user[password]']\");passwordElement.value = \"test8008\"");
                 await page.EvaluateScriptAsync("let signInBtn = document.querySelector(\"button[type='submit']\"); signInBtn.click()");
                 await page.WaitForNavigationAsync();
             }
+            Console.WriteLine("Signed in.");
         }
 
         public static async Task CarsComSetSearchParametersAsync(this ChromiumWebBrowser page, SearchParametersModel model)
         {
+            Console.WriteLine("Search parameters are setted for {0}/{1}", model.Make, model.Model);
             string script = $@"
             let carType = document.getElementById(""make-model-search-stocktype"")
             carType.value = '{model.Car}'
@@ -52,6 +56,7 @@ namespace CefSharp.MinimalExample.OffScreen.Extensions
 
         public static async Task CarsComGetCarListDataAsync(this ChromiumWebBrowser page)
         {
+            Console.WriteLine("Cars list query are running.");
             var getCarsJs = @"
         {
             const vehicleCards = Array.from(document.querySelectorAll('.vehicle-card'));
@@ -82,12 +87,14 @@ namespace CefSharp.MinimalExample.OffScreen.Extensions
 
         public static async Task CarsComGoNextPageAsync(this ChromiumWebBrowser page)
         {
+            Console.WriteLine("Getting next page...");
             await page.EvaluateScriptAsync("let nextPageBtn = document.getElementById(\"next_paginate\"); nextPageBtn.click()");
             await page.WaitForNavigationAsync(TimeSpan.FromSeconds(60));
         }
 
         public static async Task<CarModelSpesific> CarsComGetLastCarDataAsync(this ChromiumWebBrowser page)
         {
+            Console.WriteLine("Get spesific car data...");
             await page.EvaluateScriptAsync("const vehicleCards = Array.from(document.querySelectorAll('.vehicle-card'));");
             await page.EvaluateScriptAsync("let spesificCarBtn = vehicleCards[vehicleCards.length-1].querySelector(\".vehicle-card-main .vehicle-details .vehicle-card-link\"); spesificCarBtn.click()");
             await page.WaitForNavigationAsync(TimeSpan.FromSeconds(60));

@@ -1813,15 +1813,15 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Betül Tozar\\source\\repos\\CefSharp.MinimalExample\\CefSharp.MinimalExample.OffScreen\\CefSharp.MinimalExample.OffScreen.netcore.csproj",
+      "projectUniqueName": "C:\\Users\\Betül Tozar\\Source\\Repos\\carscom\\CefSharp.MinimalExample.OffScreen\\CefSharp.MinimalExample.OffScreen.netcore.csproj",
       "projectName": "CefSharp.MinimalExample.OffScreen.netcore",
-      "projectPath": "C:\\Users\\Betül Tozar\\source\\repos\\CefSharp.MinimalExample\\CefSharp.MinimalExample.OffScreen\\CefSharp.MinimalExample.OffScreen.netcore.csproj",
+      "projectPath": "C:\\Users\\Betül Tozar\\Source\\Repos\\carscom\\CefSharp.MinimalExample.OffScreen\\CefSharp.MinimalExample.OffScreen.netcore.csproj",
       "packagesPath": "C:\\Users\\Betül Tozar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Betül Tozar\\source\\repos\\CefSharp.MinimalExample\\CefSharp.MinimalExample.OffScreen\\obj.netcore\\",
+      "outputPath": "C:\\Users\\Betül Tozar\\Source\\Repos\\carscom\\CefSharp.MinimalExample.OffScreen\\obj.netcore\\",
       "projectStyle": "PackageReference",
       "crossTargeting": true,
       "configFilePaths": [
-        "C:\\Users\\Betül Tozar\\source\\repos\\CefSharp.MinimalExample\\NuGet.Config",
+        "C:\\Users\\Betül Tozar\\Source\\Repos\\carscom\\NuGet.Config",
         "C:\\Users\\Betül Tozar\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

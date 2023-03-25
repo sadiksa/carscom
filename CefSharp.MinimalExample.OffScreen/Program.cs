@@ -35,10 +35,8 @@ namespace CefSharp.MinimalExample.OffScreen
             CefRuntime.SubscribeAnyCpuAssemblyResolver();
 #endif
 
-            const string testUrl = "https://www.google.com/";
 
-            Console.WriteLine("This example application will load {0}, take a screenshot, and save it to your desktop.", testUrl);
-            Console.WriteLine("You may see Chromium debugging output, please wait...");
+            Console.WriteLine("Follow the console...");
             Console.WriteLine();
 
             //Console apps don't have a SynchronizationContext, so to ensure our await calls continue on the main thread we use a super simple implementation from
@@ -54,8 +52,9 @@ namespace CefSharp.MinimalExample.OffScreen
                 var settings = new CefSettings()
                 {
                     //By default CefSharp will use an in-memory cache, you need to specify a Cache Folder to persist data
-                    CachePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "CefSharp\\Cache")
-                };
+                    CachePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "CefSharp\\Cache"),
+                    LogSeverity = LogSeverity.Disable
+            };
 
                 //Perform dependency check to make sure all relevant resources are in our output directory.
                 var success = await Cef.InitializeAsync(settings, performDependencyCheck: true, browserProcessHandler: null);
@@ -68,13 +67,15 @@ namespace CefSharp.MinimalExample.OffScreen
                 // Create the CefSharp.OffScreen.ChromiumWebBrowser instance
                 using (var browser = new ChromiumWebBrowser("https://www.cars.com/profile"))
                 {
+                    // For deleting sign cookie
+                    // Cef.GetGlobalCookieManager().DeleteCookies("", "");
                     var initialLoadResponse = await browser.WaitForInitialLoadAsync();
 
                     if (!initialLoadResponse.Success)
                     {
                         throw new Exception(string.Format("Page load failed with ErrorCode:{0}, HttpStatusCode:{1}", initialLoadResponse.ErrorCode, initialLoadResponse.HttpStatusCode));
                     }
-
+                    Console.WriteLine("Chromium is started.");
                     await browser.CarsComCheckWhetherSignedInOrNotAsync();
 
                     var result = new List<ParentModel>();
